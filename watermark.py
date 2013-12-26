@@ -5,7 +5,7 @@ import sys
 def process(filename):
 # Open the original image
   main = Image.open(filename)
-  text_as_img = Image.open("text3.png")
+  text_as_img = Image.open("no_time.png")
   
 # Create a new image for the watermark with an alpha layer (RGBA)
 # the same size as the original image
