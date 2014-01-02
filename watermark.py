@@ -46,6 +46,7 @@ if __name__ == '__main__':
   original_path = 'stream'
   if sys.argv[1]:
     path = sys.argv[1]+'/'
+    original_path = path.split('/')[0] + '/'
   file_names = sorted((fn for fn in os.listdir(path) if fn.startswith('snap')))
   for im in file_names:
     process(im, path, original_path)

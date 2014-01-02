@@ -30,7 +30,10 @@ class mjpeg2images:
   
         h = httplib.HTTP(self.ip)  
         h.putrequest('GET',self.request)  
-        h.putheader('Authorization', 'Basic %s' % self.base64string)  
+        if (self.username == ''):
+          h.putheader('', '')  
+        else:
+          h.putheader('Authorization', 'Basic %s' % self.base64string)  
         h.endheaders()  
         errcode, errmsg, headers = h.getreply()  
         self.file = h.getfile()  
@@ -52,9 +55,10 @@ class mjpeg2images:
               self.close()
             except Exception, x:  
               pass
-            fullpath = self.path + self.filename + ("%04d" % self.number) + '.' + self.extension
+            fullpath = self.path + self.filename + ("%02d" % self.number) + '.' + self.extension
             im.save(fullpath)
             self.number += 1
+            self.number %= 100
             p.close()  
               
     def close(self):  
