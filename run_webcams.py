@@ -23,7 +23,7 @@ def start_gif(webcam):
     except psutil.TimeoutExpired:
       #print webcam.get("process_gif")
       return
-  subp = subprocess.Popen(['./generate_gif.sh ' + webcam['slug']], shell=True)
+  subp = subprocess.Popen(['./generate_gif.sh ' + webcam['slug'] + ' "' + webcam['city'] + ', ' + webcam['country'] + '"'], shell=True)
   webcam["process_gif"] = psutil.Process(subp.pid)
   print "make gif " + webcam["city"]
   
@@ -55,7 +55,7 @@ print ("\n")
 while True:
     try:
       now = datetime.datetime.now(utc)
-      #now -= datetime.timedelta(0,8*60*60)
+      now -= datetime.timedelta(0,4*60*60)
       print now
       for webcam in mylist:
         if now > webcam["endtime"]:
@@ -70,7 +70,7 @@ while True:
           # make gif
           start_gif(webcam)
 
-      time.sleep(60)  
+      time.sleep(5)  
     except KeyboardInterrupt:
       for webcam in mylist:
         stop_webcam(webcam)

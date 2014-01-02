@@ -3,8 +3,9 @@ import os
 import sys
 import os.path, time
 import datetime
+import getopt
  
-def process(filename, path, original_path):
+def process(filename, path, original_path, name):
 # Open the original image
   main = Image.open(path + '/' + filename)
   text_as_img = Image.open("mask.png")
@@ -16,12 +17,14 @@ def process(filename, path, original_path):
   waterdraw = ImageDraw.ImageDraw(watermark, "RGBA")
 # Place the text at (10, 10) in the upper left corner. Text will be white.
   font = ImageFont.truetype("Brandon_blk.otf", 22)
+  font2 = ImageFont.truetype("Brandon_blk.otf", 16)
   modifiedTime = os.path.getmtime(original_path + '/' + filename)
   str_time = datetime.datetime.fromtimestamp(modifiedTime).strftime('%H:%M:%S')
   str_day = datetime.datetime.fromtimestamp(modifiedTime).strftime('%B %d, %Y')
-  waterdraw.text((300, 284), str_time, font= font)
-  waterdraw.text((46, 284), str_day.upper(), font= font)
-  #waterdraw.text((300, 284), "11:03:08", font= font)
+  waterdraw.text((300, 304), str_time, font= font)
+  waterdraw.text((46, 304), str_day.upper(), font= font)
+  w, h = waterdraw.textsize(name, font=font2)
+  waterdraw.text((250-w/2, 154), name, font= font2)
    
 # Get the watermark image as grayscale and fade the image
 # See <http://www.pythonware.com/library/pil/handbook/image.htm#Image.point>
@@ -44,9 +47,23 @@ def process(filename, path, original_path):
 if __name__ == '__main__':
   path = 'stream/togif'
   original_path = 'stream'
-  if sys.argv[1]:
-    path = sys.argv[1]+'/'
-    original_path = path.split('/')[0] + '/'
+  name = "CENTRAL TOWER"
+  try:
+    opts, args = getopt.getopt(sys.argv[1:],"hp:n:",["name=", "path="])
+  except getopt.GetoptError:
+    print 'watermark.py -h to get help'
+    sys.exit(2)
+  for opt, arg in opts:
+    if opt == '-h':
+      print 'run "watermark.py --path myfolder" to specify a path to save images to'
+      print 'run "watermark.py --name \"Paris, France\"" to specify your camera\'s IP'
+      sys.exit()
+    elif opt in ("-p", "--path"):
+      path = arg + '/'
+      original_path = path.split('/')[0] + '/'
+    elif opt in ("-n", "--name"):
+      name = arg.upper()
+   
   file_names = sorted((fn for fn in os.listdir(path) if fn.startswith('snap')))
   for im in file_names:
-    process(im, path, original_path)
+    process(im, path, original_path, name)

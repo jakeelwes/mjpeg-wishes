@@ -2,7 +2,7 @@
   "webcams": [
   {
     "url": "212.142.228.68",
-      "request": "/axis-cgi/mjpg/video.cgi",
+      "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
       "port": "80",
       "sunrise": "8:40 CET",
       "city":"San Sebastian",
@@ -15,7 +15,7 @@
   },
   {
     "url": "216.123.238.207",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "08:49:00 -0700",
     "city":"Edmonton International Airport",
@@ -28,7 +28,7 @@
   },
   {
     "url": "213.211.42.237",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:53:00 +0100",
     "city":"Pribyslav",
@@ -41,7 +41,7 @@
   },
   {
     "url": "webcam.erieyachtclub.org",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:47:00 -0500",
     "city":"Erie Yacht Club",
@@ -54,7 +54,7 @@
   },
   {
     "url": "88.250.131.53",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "82",
     "sunrise": "07:28:00 +0200",
     "city":"Istambul",
@@ -67,7 +67,7 @@
   },
   {
     "url": "84.205.45.113",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8888",
     "sunrise": "09:43:00 +0100",
     "city":"Norheimsund",
@@ -80,7 +80,7 @@
   },
   {
     "url": "193.253.96.116",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8081",
     "sunrise": "05:41:00 +0400",
     "city":"Boucan Canot",
@@ -93,7 +93,7 @@
   },
   {
     "url": "webcam.uoregon.edu",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:47:00 -0800",
     "city":"Eugene",
@@ -106,7 +106,7 @@
   },
   {
     "url": "129.2.16.181",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:24:00 -0500",
     "city":"College Park",
@@ -119,7 +119,7 @@
   },
   {
     "url": "nsbsitecam.clayton.edu",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:40:00 -0500",
     "city":"Morrow",
@@ -132,7 +132,7 @@
   },
   {
     "url": "iris.not.iac.es",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:52:00 +0000",
     "city":"Las Palmas",
@@ -145,7 +145,7 @@
   },
   {
     "url": "93.51.197.146",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "9998",
     "sunrise": "07:12:00 +0100",
     "city":"Bagnara Calabra",
@@ -158,7 +158,7 @@
   },
   {
     "url": "107.1.228.34",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:17:00 -0500",
     "city":"Atlantic City",
@@ -171,7 +171,7 @@
   },
   {
     "url": "75.44.34.10",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "07:22:00 -0600",
     "city":"Milwaukee",
@@ -184,7 +184,7 @@
   },
   {
     "url": "launch.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "53435",
     "sunrise": "07:58:00 -0800",
     "city":"Everett",
@@ -197,7 +197,7 @@
   },
   {
     "url": "seabest.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "81",
     "sunrise": "07:46:00 +0900",
     "city":"Seoul",
@@ -210,7 +210,7 @@
   },
   {
     "url": "leig17.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "170",
     "sunrise": "08:16:00 +0100",
     "city":"Igualada",
@@ -223,7 +223,7 @@
   },
   {
     "url": "aya-tsuri.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "60001",
     "sunrise": "07:00:00 +0900",
     "city":"Okaya",
@@ -236,7 +236,7 @@
   },
   {
     "url": "nineofharts.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "7:17 -0800",
     "city":"Sonora",
@@ -249,7 +249,7 @@
   },
   {
     "url": "lasegarra.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "85",
     "sunrise": "8:20 CET",
     "city":"Igualada",
@@ -262,7 +262,7 @@
   },
   {
     "url": "woodsholeinn.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "7:13 -0500",
     "city":"Boston",
@@ -275,7 +275,7 @@
   },
   {
     "url": "calabona.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8000",
     "sunrise": "8:07 CET",
     "city":"Cala Millor",
@@ -288,7 +288,7 @@
   },
   {
     "url": "axis-b6e771.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "81",
     "sunrise": "8:10 CET",
     "city":"Palma de Mallorca",
@@ -300,21 +300,8 @@
     }
   },
   {
-    "url": "axis-78tramore.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
-    "port": "80",
-    "sunrise": "8:50 GMT",
-    "city":"Galway",
-    "country":"Ireland",
-    "website": "",
-    "location": {
-      "lat": 53.2719,
-      "lng": -9.0489
-    }
-  },
-  {
     "url": "bwcam.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8081",
     "sunrise": "8:13 CET",
     "city":"Feuchtwangen",
@@ -327,7 +314,7 @@
   },
   {
     "url": "norwalk.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "2222",
     "sunrise": "7:25 -0800",
     "city":"Fairfield",
@@ -340,7 +327,7 @@
   },
   {
     "url": "sancam.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8035",
     "sunrise": "7:16 -0500",
     "city":"Fort Myers",
@@ -353,8 +340,8 @@
   },
   {
     "url": "clarksvillelive.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
-    "port": "80",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "port": "1211",
     "sunrise": "7:01 -0600",
     "city":"Clarksville",
     "country":"United States",
@@ -366,7 +353,7 @@
   },
   {
     "url": "herrimanelem4south.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8002",
     "sunrise": "7:51 -0700",
     "city":"Salt Lake City",
@@ -379,7 +366,7 @@
   },
   {
     "url": "ardfernyacht.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8008",
     "sunrise": "8:59 GMT",
     "city":"Argyll and Bute",
@@ -392,7 +379,7 @@
   },
   {
     "url": "blueskyflight.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "1234",
     "sunrise": "7:18 -0500",
     "city":"Stratford",
@@ -405,7 +392,7 @@
   },
   {
     "url": "harborwatch.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "8000",
     "sunrise": "7:17 -0500",
     "city":"Ocean City",
@@ -418,7 +405,7 @@
   },
   {
     "url": "palladiumjamaica.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "7:41 -0500",
     "city":"Kingston",
@@ -431,7 +418,7 @@
   },
   {
     "url": "meteosg.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "8:17 CET",
     "city":"Barcelona",
@@ -444,7 +431,7 @@
   },
   {
     "url": "axis79ba5e.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "8:26 GMT",
     "city":"Pembrokeshire",
@@ -457,7 +444,7 @@
   },
   {
     "url": "mooncreek2.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
     "sunrise": "6:39 -0600",
     "city":"Panama City",
