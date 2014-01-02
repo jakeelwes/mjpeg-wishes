@@ -1,3 +1,3 @@
-apt-get install libjpeg-dev python-dev python-setuptools
-pip install PIL
+apt-get install libjpeg-dev python-dev python-setuptools python-pip imagemagick
+pip install PIL dateutils psutil slugify
 
