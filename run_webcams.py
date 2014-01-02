@@ -7,6 +7,7 @@ import datetime
 import subprocess
 import psutil
 import sys
+from slugify import slugify
 
 def start_webcam(webcam):
   if webcam.get("process") and webcam["process"].is_running():
@@ -47,6 +48,8 @@ for webcam in mylist:
   print sunrise_utc.strftime("%H:%M:%S") + " / " + webcam["name"]
   webcam["starttime"] = sunrise_utc - datetime.timedelta(0,30*60) # 30 minutes 
   webcam["endtime"] = sunrise_utc + datetime.timedelta(0,90*60) # 90 minutes 
+  webcam["slug"] = slugify(webcam["name"].split(',')[0])
+  print webcam["slug"]
 
 print ("\n")
 while True:
