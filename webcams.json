@@ -232,7 +232,7 @@
             "url": "nineofharts.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "80",
-            "sunrise": "7:17 PST",
+            "sunrise": "7:17 -0800",
             "name": "Sonora, United States",
             "website": "",
             "location": {
@@ -256,7 +256,7 @@
             "url": "woodsholeinn.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "80",
-            "sunrise": "7:13 EST",
+            "sunrise": "7:13 -0500",
             "name": "Boston, United States",
             "website": "",
             "location": {
@@ -316,7 +316,7 @@
             "url": "norwalk.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "2222",
-            "sunrise": "7:25 PST",
+            "sunrise": "7:25 -0800",
             "name": "Fairfield, United States",
             "website": "",
             "location": {
@@ -328,7 +328,7 @@
             "url": "sancam.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "8035",
-            "sunrise": "7:16 EST",
+            "sunrise": "7:16 -0500",
             "name": "Fort Myers, United States",
             "website": "",
             "location": {
@@ -340,7 +340,7 @@
             "url": "clarksvillelive.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "80",
-            "sunrise": "7:01 CST",
+            "sunrise": "7:01 -0600",
             "name": "Clarksville, United States",
             "website": "",
             "location": {
@@ -352,7 +352,7 @@
             "url": "herrimanelem4south.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "8002",
-            "sunrise": "7:51 MST",
+            "sunrise": "7:51 -0700",
             "name": "Salt Lake City, United States",
             "website": "",
             "location": {
@@ -364,7 +364,7 @@
             "url": "ardfernyacht.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "8008",
-            "sunrise": "5:28 EST",
+            "sunrise": "8:59 GMT",
             "name": "Argyll and Bute, United Kingdom",
             "website": "",
             "location": {
@@ -376,7 +376,7 @@
             "url": "blueskyflight.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "1234",
-            "sunrise": "7:18 EST",
+            "sunrise": "7:18 -0500",
             "name": "Stratford, United States",
             "website": "",
             "location": {
@@ -388,7 +388,7 @@
             "url": "harborwatch.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "8000",
-            "sunrise": "7:17 EST",
+            "sunrise": "7:17 -0500",
             "name": "Ocean City, United States",
             "website": "",
             "location": {
@@ -400,7 +400,7 @@
             "url": "palladiumjamaica.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "80",
-            "sunrise": "7:41 EST",
+            "sunrise": "7:41 -0500",
             "name": "Kingston, Jamaica",
             "website": "",
             "location": {
@@ -436,7 +436,7 @@
             "url": "mooncreek2.axiscam.net",
             "request": "/axis-cgi/mjpg/video.cgi",
             "port": "80",
-            "sunrise": "6:39 CST",
+            "sunrise": "6:39 -0600",
             "name": "Panama City, United States",
             "website": "",
             "location": {
