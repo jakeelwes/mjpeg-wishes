@@ -9,7 +9,6 @@ if ls $1/snap*.jpg > /dev/null 2>&1; then
     for f in stream_*.jpg; do cp --preserve=timestamps "$f" $GIFPATH/2"$f"; done
     for f in stream_*.jpg; do cp --preserve=timestamps "$f" $GIFPATH/3"$f"; done
     mogrify -shave 0x16 -resize 500x355 $GIFPATH/snap*.jpg
-    echo $2
     python watermark.py --path $GIFPATH --name "$2"
     convert -delay 15 -loop 0 -colors 64 $GIFPATH/*.jpg $GIFPATH/$1.gif
     cp $GIFPATH/$1.gif archives/$1-$TS.gif

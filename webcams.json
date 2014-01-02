@@ -379,7 +379,7 @@
   },
   {
     "url": "blueskyflight.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "request": "/mjpg/1/video.mjpg?camera=1",
     "port": "1234",
     "sunrise": "7:18 -0500",
     "city":"Stratford",
@@ -392,7 +392,7 @@
   },
   {
     "url": "harborwatch.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "request": "/mjpg/video.mjpg",
     "port": "8000",
     "sunrise": "7:17 -0500",
     "city":"Ocean City",
