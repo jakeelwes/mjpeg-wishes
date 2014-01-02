@@ -1,7 +1,5 @@
 # Setup
+sudo sh install_dependencies.sh
 
-`apt-get install libjpeg-dev python-dev python-setuptools`
-
-# Pip files 
-`pip install PIL`
-
+# Run
+python run_webcams.py
