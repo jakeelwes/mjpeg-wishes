@@ -14,7 +14,7 @@ def start_webcam(webcam):
     return
   subp = subprocess.Popen(['python mjpeg2images.py --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug']], shell=True)
   webcam["process"] = psutil.Process(subp.pid)
-  print "start webcam " + webcam["name"]
+  print "start webcam " + webcam["city"]
 
 def start_gif(webcam):
   if webcam.get("process_gif"):
@@ -25,12 +25,12 @@ def start_gif(webcam):
       return
   subp = subprocess.Popen(['./generate_gif.sh ' + webcam['slug']], shell=True)
   webcam["process_gif"] = psutil.Process(subp.pid)
-  print "make gif " + webcam["name"]
+  print "make gif " + webcam["city"]
   
 def stop_webcam(webcam):
   if webcam.get("process") and webcam["process"].is_running():
     webcam["process"].kill()
-    print "stop " + webcam["name"]
+    print "stop " + webcam["city"]
 
 json_data=open('webcams.json')
 
@@ -45,10 +45,10 @@ for webcam in mylist:
   sunrise_time = parser.parse(webcam["sunrise"]) 
   #sunrise_utc = sunrise_time.astimezone(timezone('Australia/Victoria'))
   sunrise_utc = sunrise_time.astimezone(timezone('CET'))
-  print sunrise_utc.strftime("%H:%M:%S") + " / " + webcam["name"]
+  print sunrise_utc.strftime("%H:%M:%S") + " / " + webcam["city"]
   webcam["starttime"] = sunrise_utc - datetime.timedelta(0,30*60) # 30 minutes 
   webcam["endtime"] = sunrise_utc + datetime.timedelta(0,90*60) # 90 minutes 
-  webcam["slug"] = slugify(webcam["name"].split(',')[0])
+  webcam["slug"] = slugify(webcam["city"])
   print webcam["slug"]
 
 print ("\n")

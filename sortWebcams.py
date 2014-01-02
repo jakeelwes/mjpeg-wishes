@@ -24,5 +24,5 @@ for webcam in mylist:
   sunrise_time = parser.parse(webcam["sunrise"]) 
   #sunrise_utc = sunrise_time.astimezone(timezone('Australia/Victoria'))
   sunrise_utc = sunrise_time.astimezone(timezone('CET'))
-  print sunrise_utc.strftime("%H:%M:%S") + " / " + webcam["name"]
+  print sunrise_utc.strftime("%H:%M:%S") + " / " + webcam["city"]
 json_data.close()
