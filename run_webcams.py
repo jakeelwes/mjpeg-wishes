@@ -55,7 +55,7 @@ print ("\n")
 while True:
     try:
       now = datetime.datetime.now(utc)
-      #now -= datetime.timedelta(0,4*60*60)
+      #now -= datetime.timedelta(0,6*60*60)
       print now
       for webcam in mylist:
         if now > webcam["endtime"]:

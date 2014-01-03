@@ -54,7 +54,7 @@
   },
   {
     "url": "88.250.131.53",
-    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=1280x720",
     "port": "82",
     "sunrise": "07:28:00 +0200",
     "city":"Istambul",
@@ -275,7 +275,7 @@
   },
   {
     "url": "calabona.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "request": "/axis-cgi/mjpg/video.cgi?camera=2&resolution=768x576",
     "port": "8000",
     "sunrise": "8:07 CET",
     "city":"Cala Millor",
