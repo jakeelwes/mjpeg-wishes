@@ -24,7 +24,7 @@ def process(filename, path, original_path, name):
   waterdraw.text((300, 304), str_time, font= font)
   waterdraw.text((46, 304), str_day.upper(), font= font)
   w, h = waterdraw.textsize(name, font=font2)
-  waterdraw.text((250-w/2, 154), name, font= font2)
+  waterdraw.text((250-w/2, 174), name, font= font2)
    
 # Get the watermark image as grayscale and fade the image
 # See <http://www.pythonware.com/library/pil/handbook/image.htm#Image.point>

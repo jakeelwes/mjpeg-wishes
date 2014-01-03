@@ -42,11 +42,19 @@ class mjpegviewer:
     def update(self, window, size, offset):          
           
         data = self.file.readline()  
-        if data[0:15] == 'Content-Length:':  
-            count = int(data[16:])  
-            s = self.file.read(count)      
+        if data[0:7] == 'Content':  
+            s = self.file.read(1)      
             while s[0] != chr(0xff):  
-                s = s[1:]       
+              s = self.file.read(1)      
+            s = [s]
+            endofjpeg = False
+            while endofjpeg != True:
+                s[len(s):] = [self.file.read(1)]      
+                if s[len(s)-1] == chr(0xff):
+                  s[len(s):] = [self.file.read(1)]      
+                  if s[len(s)-1] == chr(0xd9):
+                    endofjpeg = True
+            s = ''.join(s)
                   
             if self.path != 0:
               p = StringIO.StringIO(s)  
