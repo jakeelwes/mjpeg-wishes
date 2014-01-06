@@ -72,6 +72,7 @@ while True:
           # stop process
           stop_webcam(webcam)
           # clean folder
+          subp = subprocess.Popen(['rm --f -r ' + webcam['slug']], shell=True)
         if now < webcam["endtime"] and now > webcam["starttime"] - datetime.timedelta(0,60) :
           # start webcam if not
           start_webcam(webcam)
