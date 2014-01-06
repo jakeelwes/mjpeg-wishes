@@ -23,7 +23,8 @@ def start_gif(webcam):
     except psutil.TimeoutExpired:
       #print webcam.get("process_gif")
       return
-  subp = subprocess.Popen(['./generate_gif.sh ' + webcam['slug'] + ' "' + webcam['city'] + ', ' + webcam['country'] + '"'], shell=True)
+  subp = subprocess.Popen(['./generate_gif.sh ' + webcam['slug'] + ' "' + webcam['city'] + ', ' + webcam['country'] + '" "'+ str(parser.parse(webcam["sunrise"])) + '"' ], shell=True)
+  
   webcam["process_gif"] = psutil.Process(subp.pid)
   print "make gif " + webcam["city"]
   
@@ -40,33 +41,41 @@ mylist = data["webcams"]
 json_data.close()
 mylist.sort(key=lambda r: parser.parse(r["sunrise"]))
 
+#print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
 
 for webcam in mylist:
   sunrise_time = parser.parse(webcam["sunrise"]) 
   #sunrise_utc = sunrise_time.astimezone(timezone('Australia/Victoria'))
   sunrise_utc = sunrise_time.astimezone(timezone('CET'))
   print sunrise_utc.strftime("%H:%M:%S") + " / " + webcam["city"]
-  webcam["starttime"] = sunrise_utc - datetime.timedelta(0,30*60) # 30 minutes 
-  webcam["endtime"] = sunrise_utc + datetime.timedelta(0,90*60) # 90 minutes 
+  #webcam["starttime"] = sunrise_utc - datetime.timedelta(0,30*60) # 30 minutes 
+  #webcam["endtime"] = sunrise_utc + datetime.timedelta(0,90*60) # 90 minutes 
+  webcam["starttime"] = sunrise_utc
   webcam["slug"] = slugify(webcam["city"])
   print webcam["slug"]
+for i, webcam in enumerate(mylist):
+  webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
+  print webcam["starttime"]
+  print webcam["endtime"]
 
 print ("\n")
 while True:
     try:
-      now = datetime.datetime.now(utc)
+      now = datetime.datetime.now(timezone('CET'))
       #now -= datetime.timedelta(0,6*60*60)
       print now
-      for webcam in mylist:
+      for i, webcam in enumerate(mylist):
         if now > webcam["endtime"]:
           webcam["starttime"] += datetime.timedelta(1,0)
-          webcam["endtime"] += datetime.timedelta(1,0)
+          webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
+          mylist[(i-1)%len(mylist)]["endtime"] = webcam["starttime"] 
           # stop process
           stop_webcam(webcam)
-        if now < webcam["endtime"] and now > webcam["starttime"] :
-        #if True:
+          # clean folder
+        if now < webcam["endtime"] and now > webcam["starttime"] - datetime.timedelta(0,60) :
           # start webcam if not
           start_webcam(webcam)
+        if now < webcam["endtime"] and now > webcam["starttime"] :
           # make gif
           start_gif(webcam)
 

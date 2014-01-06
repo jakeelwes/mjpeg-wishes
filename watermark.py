@@ -4,8 +4,11 @@ import sys
 import os.path, time
 import datetime
 import getopt
+from pytz import timezone
+from dateutil.tz import tzlocal
+from dateutil import parser
  
-def process(filename, path, original_path, name):
+def process(filename, path, original_path, name, localtime):
 # Open the original image
   main = Image.open(path + '/' + filename)
   text_as_img = Image.open("mask.png")
@@ -19,8 +22,10 @@ def process(filename, path, original_path, name):
   font = ImageFont.truetype("Brandon_blk.otf", 22)
   font2 = ImageFont.truetype("Brandon_blk.otf", 16)
   modifiedTime = os.path.getmtime(original_path + '/' + filename)
-  str_time = datetime.datetime.fromtimestamp(modifiedTime).strftime('%H:%M:%S')
-  str_day = datetime.datetime.fromtimestamp(modifiedTime).strftime('%B %d, %Y')
+  modifiedTime = (datetime.datetime.fromtimestamp(modifiedTime)).replace(tzinfo=tzlocal())
+  modifiedTime = modifiedTime.astimezone(parser.parse(localtime).tzinfo)
+  str_time = modifiedTime.strftime('%H:%M:%S')
+  str_day = modifiedTime.strftime('%B %d, %Y')
   waterdraw.text((300, 304), str_time, font= font)
   waterdraw.text((46, 304), str_day.upper(), font= font)
   w, h = waterdraw.textsize(name, font=font2)
@@ -48,8 +53,9 @@ if __name__ == '__main__':
   path = 'stream/togif'
   original_path = 'stream'
   name = "CENTRAL TOWER"
+  localtime = "2014-01-07 00:03:33.923494+09:00"
   try:
-    opts, args = getopt.getopt(sys.argv[1:],"hp:n:",["name=", "path="])
+    opts, args = getopt.getopt(sys.argv[1:],"hp:n:t:",["name=", "path=", "localtime="])
   except getopt.GetoptError:
     print 'watermark.py -h to get help'
     sys.exit(2)
@@ -63,7 +69,9 @@ if __name__ == '__main__':
       original_path = path.split('/')[0] + '/'
     elif opt in ("-n", "--name"):
       name = arg.upper()
+    elif opt in ("-t", "--localtime"):
+      localtime = arg
    
   file_names = sorted((fn for fn in os.listdir(path) if fn.startswith('snap')))
   for im in file_names:
-    process(im, path, original_path, name)
+    process(im, path, original_path, name, localtime)
