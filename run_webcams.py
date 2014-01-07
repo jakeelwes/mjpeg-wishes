@@ -12,7 +12,11 @@ from slugify import slugify
 def start_webcam(webcam):
   if webcam.get("process") and webcam["process"].is_running():
     return
-  subp = subprocess.Popen(['python mjpeg2images.py --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug']], shell=True)
+  mjpeg2images_script = 'mjpeg2images.py'
+  if webcam['request'][0:4] == '/nph':
+    mjpeg2images_script = 'mjpeg2images_panasonic.py'
+    print mjpeg2images_script 
+  subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug']], shell=True)
   webcam["process"] = psutil.Process(subp.pid)
   print "start webcam " + webcam["city"]
 
