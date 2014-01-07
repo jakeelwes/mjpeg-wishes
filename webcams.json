@@ -327,7 +327,7 @@
   },
   {
     "url": "sancam.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "request": "/mjpg/video.mjpg?resolution=640x480",
     "port": "8035",
     "sunrise": "07:16:00 -0500",
     "city":"Fort Myers",
@@ -454,6 +454,281 @@
       "lat": 30.2012,
       "lng": -85.672203
     }
-  }
+  },
+        {
+            "url": "67.53.48.2",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "06:59:00 -1000",
+            "city":"Keauhou",
+            "country":"Hawaii",
+            "website": "",
+            "location": {
+                "lat": 19.56530,
+                "lng":  -155.96500
+            }
+        },
+        {
+            "url": "213.3.47.128",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "60001",
+            "sunrise": "08:13:00 +0100",
+            "city":"Fankhaus",
+            "country":"Switzerland",
+            "website": "",
+            "location": {
+                "lat": 46.966694,
+                "lng": 7.908182
+            }
+        },
+        {
+            "url": "87.23.32.118",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "12380",
+            "sunrise": "07:45:00 +0000",
+            "city":"Duino",
+            "country":"Italy",
+            "website": "",
+            "location": {
+                "lat": 45.77351,
+                "lng": 13.599014
+            }
+        },
+        {
+            "url": "218.47.39.195",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "06:49:00 +0900",
+            "city":"Habushi Ura beach",
+            "country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 34.365544,
+                "lng": 139.242868
+            }
+        },
+        {
+            "url": "92.254.52.236",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "08:48:00 +0100",
+            "city":"Vlaardingen",
+            "country":"Netherlands",
+            "website": "",
+            "location": {
+                "lat": 51.910444,
+                "lng": 4.344835
+            }
+        },
+        {
+            "url": "116.193.97.222",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "07:09:00 +0900",
+            "city":"Himeji",
+            "country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 34.8167,
+                "lng": 134.699997
+            }
+        },
+        {
+            "url": "61.119.240.180",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "8080",
+            "sunrise": "06:54:00 +0900",
+            "city":"Sendai",
+            "country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 38.300782,
+                "lng": 140.824642
+            }
+        },
+        {
+            "url": "80.254.191.189",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "1024",
+            "sunrise": "08:11:00 +0100",
+            "city":"Uster",
+            "country":"Switzerland",
+            "website": "",
+            "location": {
+                "lat": 47.374313,
+                "lng": 8.733412
+            }
+        },
+        {
+            "url": "85.252.171.163",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "8080",
+            "sunrise": "09:58:00 +0100",
+            "city":"Hustad",
+            "country":"Norway",
+            "website": "",
+            "location": {
+                "lat": 62.940116,
+                "lng": 7.204628
+            }
+        },
+        {
+            "url": "camera19.city.tarumizu.lg.jp",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "07:17:00 +0900",
+            "city":"Tarumizu",
+            "country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 31.494271,
+                "lng": 130.701438
+             }
+        },
+        {
+            "url": "camera.kkbtv.com",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "8080",
+            "sunrise": "07:24:00 +0900",
+            "city":"Nagasaki",
+            "country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 32.741912,
+                "lng": 129.869589
+            }
+        },
+        {
+            "url": "camera.town.kiyosato.hokkaido.jp",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "06:59:00 +0100",
+            "city":"Kiyosato",
+            "country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 45.738608,
+                "lng": 144.597588
+            }
+        },
+        {
+            "url": "labcam1.uchicago.edu",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "07:18:00 -0600 ",
+            "city":"Chicago",
+            "country":"United States",
+            "website": "",
+            "location": {
+                "lat": 41.780399,
+                "lng": -87.602699
+            }
+        },
+        {
+            "url": "live-camera.city.shingu.lg.jp",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "07:02:00 +0900",
+            "city":"Shingu",
+            "country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 33.724982,
+                "lng": 135.995142
+            }
+        },
+        {
+            "url": "mailserver.charlestonharborresort.com",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "1123",
+            "sunrise": "07:30:00 -0500",
+            "city":"Charleston",
+"country":"United States",
+            "website": "",
+            "location": {
+                "lat": 32.785303,
+                "lng": -79.907955
+            }
+        },
+        {
+            "url": "pier1.kik.de",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "08:14:00 +0100",
+            "city":"Leipzig",
+"country":"Germany",
+            "website": "",
+            "location": {
+                "lat": 51.341999,
+                "lng": 12.375
+            }
+        },
+        {
+            "url": "shizenkan.iobb.net",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "06:55:00 +0900",
+            "city":"Yamagata",
+"country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 38.257054,
+                "lng": 140.374718
+            }
+        },
+        {
+            "url": "skywave-lr-rkr.skywavebroadband.net",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "8888",
+            "sunrise": "07:04:00 -1000",
+            "city":"Napili Honokowai",
+"country":"United States",
+            "website": "",
+            "location": {
+                "lat": 20.970416,
+                "lng": -156.677399
+            }
+        },
+        {
+            "url": "usla.viewnetcam.com",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "9003",
+            "sunrise": "07:28:00 -0500",
+            "city":"Litte Fals NY",
+"country":"United States",
+            "website": "",
+            "location": {
+                "lat": 43.034455,
+                "lng": -74.855261
+            }
+        },
+        {
+            "url": "virahp-camera2.osarika.com",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "80",
+            "sunrise": "06:52:00 +0900",
+            "city":"Tokyo",
+"country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 35.685001,
+                "lng": 139.751404
+            }
+        },
+        {
+            "url": "webcam.space-park.jp",
+            "request": "/nphMotionJpeg?Resolution=640x480",
+            "port": "2222",
+            "sunrise": "06:52:00 +0900",
+            "city":"Tokyo",
+"country":"Japan",
+            "website": "",
+            "location": {
+                "lat": 35.685001,
+                "lng": 139.751404
+            }
+        }        
+
+         
   ]
 }

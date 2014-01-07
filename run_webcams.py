@@ -61,7 +61,6 @@ for i, webcam in enumerate(mylist):
   webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
   print webcam["starttime"]
   print webcam["endtime"]
-
 print ("\n")
 while True:
     try:
