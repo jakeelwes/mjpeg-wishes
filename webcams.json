@@ -196,19 +196,6 @@
     }
   },
   {
-    "url": "seabest.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
-    "port": "81",
-    "sunrise": "07:46:00 +0900",
-    "city":"Seoul",
-    "country":"Korea",
-    "website": "",
-    "location": {
-      "lat": 37.597912,
-      "lng": 126.979179
-    }
-  },
-  {
     "url": "leig17.axiscam.net",
     "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "170",
