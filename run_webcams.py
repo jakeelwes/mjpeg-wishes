@@ -74,6 +74,9 @@ for i, webcam in enumerate(mylist):
   webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
   print webcam["starttime"]
   print webcam["endtime"]
+
+outfile=open('/var/www/soixantesunrises/webcams.json','w')
+json.dump(mylist,outfile)
 print ("\n")
 while True:
     try:
