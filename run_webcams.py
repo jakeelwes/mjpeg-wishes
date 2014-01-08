@@ -49,7 +49,7 @@ def stop_webcam(webcam):
     webcam["process"].kill()
     print "stop " + webcam["city"]
 
-json_data=open('webcams.json')
+json_data=open('webcams_three.json')
 
 data = json.load(json_data)
 #pprint(data)
@@ -57,7 +57,6 @@ mylist = data["webcams"]
 json_data.close()
 mylist.sort(key=lambda r: parser.parse(r["sunrise"]))
 print len(mylist)
-sys.exit()
 
 #print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
 
@@ -82,9 +81,9 @@ while True:
       #now -= datetime.timedelta(0,6*60*60)
       print now
       for i, webcam in enumerate(mylist):
-          # start webcam if not
-          start_webcam(webcam)
-          start_gif(webcam)
+        # start webcam if not
+        start_webcam(webcam)
+        start_gif(webcam)
         if now > webcam["endtime"]:
           webcam["starttime"] += datetime.timedelta(1,0)
           webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]

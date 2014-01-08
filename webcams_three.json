@@ -1,0 +1,43 @@
+{
+  "webcams": [
+  {
+    "url": "212.142.228.68",
+      "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+      "port": "80",
+      "sunrise": "08:40:00 +0100",
+      "city":"San Sebastian",
+      "country":"Spain",
+      "website": "http://www.kursaal.com.es/",
+      "location": {
+        "lat": 43.325896,
+        "lng": -1.977757
+      }
+  },
+  {
+    "url": "216.123.238.207",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "port": "80",
+    "sunrise": "08:49:00 -0700",
+    "city":"Edmonton International Airport",
+    "country":"Canada",
+    "website": "http://flyeia.com/node/32374",
+    "location": {
+      "lat": 53.309032,
+      "lng": -113.596587
+    }
+  },
+  {
+    "url": "213.211.42.237",
+    "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
+    "port": "80",
+    "sunrise": "07:53:00 +0100",
+    "city":"Pribyslav",
+    "country":"Czech Republic",
+    "website": "http://www.pribyslav.cz/",
+    "location": {
+      "lat": 49.5772,
+      "lng": 15.7386
+    }
+  }        
+  ]
+}

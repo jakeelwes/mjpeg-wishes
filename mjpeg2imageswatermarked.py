@@ -65,7 +65,7 @@ class mjpeg2images:
             except Exception, x:  
               pass
             im = self.process(im)
-            fullpath = self.path + self.filename + ("%02" % self.number) + '.' + self.extension
+            fullpath = self.path + self.filename + ("%02d" % self.number) + '.' + self.extension
             im.save(fullpath)
             self.number += 1
             self.number %= 100
