@@ -49,7 +49,7 @@ def stop_webcam(webcam):
     webcam["process"].kill()
     print "stop " + webcam["city"]
 
-json_data=open('webcams_three.json')
+json_data=open('webcams.json')
 
 data = json.load(json_data)
 #pprint(data)
