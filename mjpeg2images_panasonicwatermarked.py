@@ -119,7 +119,7 @@ def main(argv):
   localtime = "2014-01-07 00:03:33.923494+09:00"
 
   try:
-    opts, args = getopt.getopt(argv,"hi:p:r:n:t:",["ip=", "path=", "request=", "name=", "localtime"])
+    opts, args = getopt.getopt(argv,"hi:p:r:n:t:",["ip=", "path=", "request=", "name=", "localtime="])
   except getopt.GetoptError:
     print 'mjpeg2images.py -h to get help'
     sys.exit(2)
