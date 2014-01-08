@@ -16,7 +16,7 @@ def start_webcam(webcam):
   if webcam['request'][0:4] == '/nph':
     mjpeg2images_script = 'mjpeg2images_panasonicwatermarked.py'
     print mjpeg2images_script 
-  subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug']], shell=True)
+  subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug'] + ' --name ""' + webcam['city'] + ', ' + webcam['country'] + '"" --localtime ""'+ str(parser.parse(webcam["sunrise"])) + '""' ], shell=True)
   webcam["process"] = psutil.Process(subp.pid)
   print "start webcam " + webcam["city"]
 
@@ -75,8 +75,12 @@ for i, webcam in enumerate(mylist):
   print webcam["starttime"]
   print webcam["endtime"]
 
-outfile=open('/var/www/soixantesunrises/webcams.json','w')
-json.dump(mylist,outfile)
+try:
+  outfile=open('/var/www/soixantesunrises/webcams.json','w')
+  json.dump(mylist,outfile)
+except:
+  pass
+
 print ("\n")
 while True:
     try:
