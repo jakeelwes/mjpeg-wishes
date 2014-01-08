@@ -573,19 +573,6 @@
              }
         },
         {
-            "url": "camera.kkbtv.com",
-            "request": "/nphMotionJpeg?Resolution=640x480",
-            "port": "8080",
-            "sunrise": "07:24:00 +0900",
-            "city":"Nagasaki",
-            "country":"Japan",
-            "website": "",
-            "location": {
-                "lat": 32.741912,
-                "lng": 129.869589
-            }
-        },
-        {
             "url": "camera.town.kiyosato.hokkaido.jp",
             "request": "/nphMotionJpeg?Resolution=640x480",
             "port": "80",

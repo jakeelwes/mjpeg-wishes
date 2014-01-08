@@ -12,9 +12,9 @@ from slugify import slugify
 def start_webcam(webcam):
   if webcam.get("process") and webcam["process"].is_running():
     return
-  mjpeg2images_script = 'mjpeg2images.py'
+  mjpeg2images_script = 'mjpeg2imageswatermarked.py'
   if webcam['request'][0:4] == '/nph':
-    mjpeg2images_script = 'mjpeg2images_panasonic.py'
+    mjpeg2images_script = 'mjpeg2images_panasonicwatermarked.py'
     print mjpeg2images_script 
   subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug']], shell=True)
   webcam["process"] = psutil.Process(subp.pid)
@@ -27,10 +27,22 @@ def start_gif(webcam):
     except psutil.TimeoutExpired:
       #print webcam.get("process_gif")
       return
-  subp = subprocess.Popen(['./generate_gif.sh ' + webcam['slug'] + ' "' + webcam['city'] + ', ' + webcam['country'] + '" "'+ str(parser.parse(webcam["sunrise"])) + '"' ], shell=True)
+  subp = subprocess.Popen(['./generate_clean_gif.sh ' + webcam['slug'] ], shell=True)
   
   webcam["process_gif"] = psutil.Process(subp.pid)
   print "make gif " + webcam["city"]
+ 
+def start_gifmail(webcam):
+  if webcam.get("process_gifmail"):
+    try:
+      webcam["process_gifmail"].wait(1)
+    except psutil.TimeoutExpired:
+      #print webcam.get("process_gif")
+      return
+  subp = subprocess.Popen(['./generate_gif_with_loading.sh ' + webcam['slug'] ], shell=True)
+  
+  webcam["process_gifmail"] = psutil.Process(subp.pid)
+  print "make gif mail" + webcam["city"]
   
 def stop_webcam(webcam):
   if webcam.get("process") and webcam["process"].is_running():
@@ -44,6 +56,8 @@ data = json.load(json_data)
 mylist = data["webcams"]
 json_data.close()
 mylist.sort(key=lambda r: parser.parse(r["sunrise"]))
+print len(mylist)
+sys.exit()
 
 #print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
 
@@ -68,22 +82,18 @@ while True:
       #now -= datetime.timedelta(0,6*60*60)
       print now
       for i, webcam in enumerate(mylist):
+          # start webcam if not
+          start_webcam(webcam)
+          start_gif(webcam)
         if now > webcam["endtime"]:
           webcam["starttime"] += datetime.timedelta(1,0)
           webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
           mylist[(i-1)%len(mylist)]["endtime"] = webcam["starttime"] 
-          # stop process
-          stop_webcam(webcam)
-          # clean folder
-          subp = subprocess.Popen(['rm --f -r ' + webcam['slug']], shell=True)
-        if now < webcam["endtime"] and now > webcam["starttime"] - datetime.timedelta(0,60) :
-          # start webcam if not
-          start_webcam(webcam)
         if now < webcam["endtime"] and now > webcam["starttime"] :
           # make gif
-          start_gif(webcam)
+          start_gifmail(webcam)
 
-      time.sleep(5)  
+      time.sleep(30)  
     except KeyboardInterrupt:
       for webcam in mylist:
         stop_webcam(webcam)
