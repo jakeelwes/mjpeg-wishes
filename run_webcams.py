@@ -63,7 +63,10 @@ print len(mylist)
 
 if not os.path.exists("/var/www/soixantesunrises"):
   os.makedirs("/var/www/soixantesunrises")
-for webcam in mylist:
+for webcam in mylist[:]:
+  if webcam.get("down"):
+    mylist.remove(webcam)
+
   webcam["slug"] = slugify(webcam["city"])
 try:
   outfile=open('/var/www/soixantesunrises/webcams.json','w')
