@@ -749,7 +749,7 @@
 "url" : "cctvvrk.egat.com",
 "port" : "80",
 "request" : "/mjpg/video.mjpg",
-"sunrise": "06:49:00i +0700",
+"sunrise": "06:49:00 +0700",
 "city" : "Vajiralongkorn Dam",
 "country" : "Thailand",
 "website" : "",
