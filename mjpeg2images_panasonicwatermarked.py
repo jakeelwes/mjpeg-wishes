@@ -30,6 +30,8 @@ class mjpeg2images:
         self.number = 0
         self.path = path
         self.request = request
+        self.name = name
+        self.localtime = str(localtime)
         if not os.path.exists(self.path):
               os.makedirs(self.path)
   
@@ -82,9 +84,12 @@ class mjpeg2images:
     def process(self, myimage):
 # crop
       w, h = myimage.size
+      if w < 640:
+        myimage = myimage.transform((640,480), Image.EXTENT,(0,0,w,h),Image.NEAREST)
+      w, h = myimage.size
       w2,h2 = 640,440
       myimage = myimage.crop((w/2 - w2/2, h/2 - h2/2, w/2 + w2/2, h/2 + h2/2))
-      myimage = myimage.resize((500,344), Image.ANTIALIAS)
+      myimage.thumbnail((500,344), Image.ANTIALIAS)
 
       text_as_img = Image.open("mask.png")
       
@@ -142,7 +147,7 @@ def main(argv):
     elif opt in ("-t", "--localtime"):
       localtime = arg
    
-  camera = mjpeg2images(host, '', '', request, path)  
+  camera = mjpeg2images(host, '', '', request, path, name, localtime)  
   camera.connect()  
     
   while True:  

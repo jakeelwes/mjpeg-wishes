@@ -1,3 +1,4 @@
+import os
 import json
 from pprint import pprint
 import time
@@ -60,6 +61,8 @@ print len(mylist)
 
 #print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
 
+if not os.path.exists("/var/www/soixantesunrises"):
+  os.makedirs("/var/www/soixantesunrises")
 for webcam in mylist:
   webcam["slug"] = slugify(webcam["city"])
 try:
