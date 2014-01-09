@@ -242,7 +242,7 @@
     "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "85",
     "sunrise": "08:20:00 +0100",
-    "city":"Igualada",
+    "city":"La Segarra",
     "country":"Spain",
     "website": "",
     "location": {
@@ -579,7 +579,7 @@
             "url": "camera.town.kiyosato.hokkaido.jp",
             "request": "/nphMotionJpeg?Resolution=640x480",
             "port": "80",
-            "sunrise": "06:59:00 +0100",
+            "sunrise": "06:59:00 +0900",
             "city":"Kiyosato",
             "country":"Japan",
             "website": "",

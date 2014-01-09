@@ -52,6 +52,7 @@ class mjpeg2images:
     def update(self):          
           
         data = self.file.readline()  
+        #print data
         if data[0:15] == 'Content-Length:':  
             count = int(data[16:])  
             s = self.file.read(count)      
