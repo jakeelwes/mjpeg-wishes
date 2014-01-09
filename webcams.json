@@ -37,7 +37,8 @@
     "location": {
       "lat": 49.5772,
       "lng": 15.7386
-    }
+    },
+    "down": 1
   },
   {
     "url": "webcam.erieyachtclub.org",
@@ -54,7 +55,7 @@
   },
   {
     "url": "88.250.131.53",
-    "request": "/axis-cgi/mjpg/video.cgi?resolution=1280x720",
+    "request": "/mjpg/video.mjpg?resolution=1280x720",
     "port": "82",
     "sunrise": "07:28:00 +0200",
     "city":"Istambul",
@@ -76,7 +77,8 @@
     "location": {
       "lat": 60.372731,
       "lng": 6.147169
-    }
+    },
+    "down":1
   },
   {
     "url": "193.253.96.116",
@@ -89,7 +91,8 @@
     "location": {
       "lat": -21.022983,
       "lng": 55.22687
-    }
+    },
+    "down": 1
   },
   {
     "url": "webcam.uoregon.edu",
@@ -262,7 +265,7 @@
   },
   {
     "url": "calabona.axiscam.net",
-    "request": "/axis-cgi/mjpg/video.cgi?camera=2&resolution=768x576",
+    "request": "/mjpg/2/video.mjpg",
     "port": "8000",
     "sunrise": "08:07:00 +0100",
     "city":"Cala Millor",
