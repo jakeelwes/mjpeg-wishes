@@ -756,7 +756,8 @@
 "location" : {
 "lat" : 14.799444,
 "lng" :  98.596944
-}
+},
+"down" : 1
 },
 {
 "url" : "livevideo.worldicearena.com",
@@ -783,7 +784,21 @@
 "lat" : 22.283300,
 "lng" : 114.150002
 }
+},
+{
+"url" : "elwoodsc.axiscam.net",
+"request" : "/mjpg/video.mjpg?resolution=640x480",
+"port" : "8201",
+"sunrise": "08:05:00 +1100",
+"city" : "Elwood",
+"country" : "Australia",
+"website" : "",
+"location" : {
+"lat" : -37.882198,
+"lng" : 144.978104
 }
+}
+
 
          
   ]
