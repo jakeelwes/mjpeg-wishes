@@ -1,5 +1,8 @@
-IP=$(echo $1 | sed -e "s/:.*//")
-PORT=$(echo $1 | sed -n "s/.*:\(.*\)/\1/p")
+ALL=$(echo $1 | sed -n "s/http:\/\///p" | sed -n "s/^\([^:\/]\+\)\(:\([^\/]\+\)\)\?\(\/.*$\)/\1 \3 \4/p")
+set $ALL
+IP=$1
+PORT=$2
+REQUEST=$3
 if [ -z "$PORT" ]; then
   PORT=80
 fi
@@ -11,10 +14,11 @@ LONG=$(echo $DATA | sed -n 's/GeoIP City Edition, .*: .*, .*,\(.*\), .*, \(.*\),
 SUNRISE=$( w3m "google.com/search?q=sunrise:$CITY" | sed -n 's/.*\([0-9]\+:[0-9]\+\).* (\(.*\)) - Sunrise in.*/\1 \2/p' )
 echo  {
  echo     \"url\" : \"$IP\",
- echo     \"request\" : \"/axis-cgi/mjpg/video.cgi\",
+ echo     \"request\" : \"$REQUEST\",
  echo     \"port\" : \"$PORT\",
 echo    \"sunrise\": \"$SUNRISE\",
- echo     \"name\" : \"$CITY, $COUNTRY\",
+ echo     \"city\" : \"$CITY\",
+ echo     \"country\" : \"$COUNTRY\",
  echo     \"website\" : \"\",
  echo     \"location\" : {
  echo       \"lat\" : $LAT,
