@@ -680,13 +680,13 @@
             "url": "virahp-camera2.osarika.com",
             "request": "/nphMotionJpeg?Resolution=640x480",
             "port": "80",
-            "sunrise": "06:52:00 +0900",
-            "city":"Tokyo",
-"country":"Japan",
+            "sunrise": "07:03:00 +0900",
+            "city":"Kurohime",
+            "country":"Japan",
             "website": "",
             "location": {
-                "lat": 35.685001,
-                "lng": 139.751404
+                "lat": 36.8154,
+                "lng": 138.206105
             }
         },
         {
