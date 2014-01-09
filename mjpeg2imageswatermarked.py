@@ -31,7 +31,9 @@ class mjpeg2images:
         self.path = path
         self.request = request
         self.name = name
-        self.localtime = localtime
+        self.localtime = str(localtime)
+	#print 'this is' + self.localtime
+	#print parser.parse(self.localtime)
         if not os.path.exists(self.path):
               os.makedirs(self.path)
   
@@ -113,7 +115,7 @@ def main(argv):
   localtime = "2014-01-07 00:03:33.923494+09:00"
 
   try:
-    opts, args = getopt.getopt(argv,"hi:p:r:n:t:",["ip=", "path=", "request=", "name=", "localtime"])
+    opts, args = getopt.getopt(argv,"hi:p:r:n:t:",["ip=", "path=", "request=", "name=", "localtime="])
   except getopt.GetoptError:
     print 'mjpeg2images.py -h to get help'
     sys.exit(2)

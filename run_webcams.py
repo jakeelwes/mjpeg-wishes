@@ -1,3 +1,4 @@
+import os
 import json
 from pprint import pprint
 import time
@@ -16,7 +17,7 @@ def start_webcam(webcam):
   if webcam['request'][0:4] == '/nph':
     mjpeg2images_script = 'mjpeg2images_panasonicwatermarked.py'
     print mjpeg2images_script 
-  subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug'] + ' --name ""' + webcam['city'] + ', ' + webcam['country'] + '"" --localtime ""'+ str(parser.parse(webcam["sunrise"])) + '""' ], shell=True)
+  subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug'] + ' --name "' + webcam['city'] + ', ' + webcam['country'] + '" --localtime "'+ str(parser.parse(webcam["sunrise"])) + '"' ], shell=True)
   webcam["process"] = psutil.Process(subp.pid)
   print "start webcam " + webcam["city"]
 
@@ -49,7 +50,7 @@ def stop_webcam(webcam):
     webcam["process"].kill()
     print "stop " + webcam["city"]
 
-json_data=open('webcams_three.json')
+json_data=open('webcams.json')
 
 data = json.load(json_data)
 #pprint(data)
@@ -59,6 +60,17 @@ mylist.sort(key=lambda r: parser.parse(r["sunrise"]))
 print len(mylist)
 
 #print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
+
+if not os.path.exists("/var/www/soixantesunrises"):
+  os.makedirs("/var/www/soixantesunrises")
+for webcam in mylist:
+  webcam["slug"] = slugify(webcam["city"])
+try:
+  outfile=open('/var/www/soixantesunrises/webcams.json','w')
+  json.dump(mylist,outfile)
+except:
+  pass
+outfile.close()
 
 for webcam in mylist:
   sunrise_time = parser.parse(webcam["sunrise"]) 
@@ -75,11 +87,6 @@ for i, webcam in enumerate(mylist):
   print webcam["starttime"]
   print webcam["endtime"]
 
-try:
-  outfile=open('/var/www/soixantesunrises/webcams.json','w')
-  json.dump(mylist,outfile)
-except:
-  pass
 
 print ("\n")
 while True:

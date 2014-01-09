@@ -11,6 +11,8 @@ if ls $1/snap*.jpg > /dev/null 2>&1; then
     convert -delay 15 -loop 0 -colors 64 $LIST $GIFPATH/$1.gif
     mv $GIFPATH/$1.gif $WWWPATH/last.gif
     cp $WWWPATH/last.gif $WWWPATH/$1-$TS.gif
+    cp $1/snap00.jpg $WWWPATH/
+    mv $WWWPATH/snap00.jpg $WWWPATH/last.jpg
     echo "{\"last\":\"$1-$TS.gif\"}" > $WWWPATH/last.json
   else
     echo "No files in $1"
