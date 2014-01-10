@@ -6,6 +6,11 @@ import base64
 import StringIO  
 import Image
 import getopt
+from PIL import Image, ImageDraw, ImageFont
+import datetime
+from pytz import timezone
+from dateutil.tz import tzlocal
+from dateutil import parser
   
 class mjpeg2images:  
     path = 'stream/'
@@ -13,9 +18,11 @@ class mjpeg2images:
     extension = 'jpg'
     number = 0
     request = '/axis-cgi/mjpg/video.cgi'
+    name = 'PARIS, FRANCE'
+    localtime = "2014-01-07 00:03:33.923494+09:00"
     lastread = ''
   
-    def __init__(self, ip, username='admin', password='admin', request = '/axis-cgi/mjpg/video.cgi', path="stream/"):  
+    def __init__(self, ip, username='admin', password='admin', request = '/axis-cgi/mjpg/video.cgi', path="stream/", name = 'PARIS, FRANCE', localtime = "2014-01-07 00:03:33.923494+09:00"):  
   
         self.ip = ip  
         self.username = username  
@@ -24,6 +31,8 @@ class mjpeg2images:
         self.number = 0
         self.path = path
         self.request = request
+        self.name = name
+        self.localtime = str(localtime)
         if not os.path.exists(self.path):
               os.makedirs(self.path)
   
@@ -48,7 +57,8 @@ class mjpeg2images:
               self.lastread = partsofpart[0]
               continue
             s = '\xff\xd8' + partsofpart[0] + '\xff\xd9'
-
+          
+                         
             p = StringIO.StringIO(s)  
             im = Image.open(p)
             try:
@@ -57,6 +67,7 @@ class mjpeg2images:
               self.close()
             except Exception, x:  
               pass
+            im = self.process(im)
             fullpath = self.path + self.filename + ("%02d" % self.number) + '.' + self.extension
             im.save(fullpath)
             self.number += 1
@@ -65,6 +76,38 @@ class mjpeg2images:
               
     def close(self):  
       sys.exit()
+    def process(self, myimage):
+# crop
+      w, h = myimage.size
+      if w < 640 or h < 480:
+        myimage = myimage.transform((640,480), Image.EXTENT,(0,0,w,h),Image.NEAREST)
+        w, h = myimage.size
+      w2,h2 = 640,440
+      myimage = myimage.crop((w/2 - w2/2, h/2 - h2/2, w/2 + w2/2, h/2 + h2/2))
+      myimage.thumbnail((500,344), Image.ANTIALIAS)
+
+      text_as_img = Image.open("mask.png")
+      
+# Create a new image for the watermark with an alpha layer (RGBA)
+# the same size as the original image
+      watermark = Image.new("RGBA", myimage.size)
+# Get an ImageDraw object so we can draw on the image
+      waterdraw = ImageDraw.ImageDraw(watermark, "RGBA")
+# Place the text at (10, 10) in the upper left corner. Text will be white.
+      font = ImageFont.truetype("Brandon_blk.otf", 22)
+      font2 = ImageFont.truetype("Brandon_blk.otf", 16)
+      modifiedTime = datetime.datetime.now().replace(tzinfo=tzlocal())
+      modifiedTime = modifiedTime.astimezone(parser.parse(self.localtime).tzinfo)
+      str_time = modifiedTime.strftime('%H:%M:%S')
+      str_day = modifiedTime.strftime('%B %d, %Y')
+      waterdraw.text((300, 304), str_time, font= font)
+      waterdraw.text((46, 304), str_day.upper(), font= font)
+      w, h = waterdraw.textsize(self.name, font=font2)
+      waterdraw.text((250-w/2, 174), self.name, font= font2)
+       
+      myimage.paste(watermark, None, watermark)
+      myimage.paste(text_as_img, (0,0), text_as_img)
+      return myimage
       
 def main(argv):
   nowindow = False
@@ -72,9 +115,11 @@ def main(argv):
   path = 'stream/'
   request = '/axis-cgi/mjpg/video.cgi'
   screen = ''
+  name = 'PARIS, FRANCE'
+  localtime = "2014-01-07 00:03:33.923494+09:00"
 
   try:
-    opts, args = getopt.getopt(argv,"hi:p:r:",["ip=", "path=", "request="])
+    opts, args = getopt.getopt(argv,"hi:p:r:n:t:",["ip=", "path=", "request=", "name=", "localtime="])
   except getopt.GetoptError:
     print 'mjpeg2images.py -h to get help'
     sys.exit(2)
@@ -92,8 +137,12 @@ def main(argv):
       path = arg + '/'
     elif opt in ("-r", "--request"):
       request = arg
+    elif opt in ("-n", "--name"):
+      name = arg.upper()
+    elif opt in ("-t", "--localtime"):
+      localtime = arg
    
-  camera = mjpeg2images(host, '', '', request, path)  
+  camera = mjpeg2images(host, '', '', request, path, name, localtime)  
   camera.connect()  
     
   while True:  
