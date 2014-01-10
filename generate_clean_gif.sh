@@ -1,21 +1,23 @@
-GIFPATH=$1/cleangif
-WWWPATH=/var/www/soixantesunrises/$1
+SLUG=$1
+GIFPATH=$SLUG/cleangif
+WWWPATH=/var/www/soixantesunrises/$SLUG
 FILELIST=$GIFPATH/images_list.txt
-if ls $1/snap*.jpg > /dev/null 2>&1; then
+if ls $SLUG/snap*.jpg > /dev/null 2>&1; then
     mkdir -p $GIFPATH
     mkdir -p $WWWPATH
     mkdir -p archives
     TS=$( date +%Y%m%d%H%M%S )
-    find $1/ -name \*.jpg -printf "%C+ %h/%f\n" | sort -r | head -n70 | awk '{print ""$2""}' | sed -n '1!G;h;$p' > $FILELIST 
+    find $SLUG/ -name \*.jpg -printf "%C+ %h/%f\n" | sort -r | head -n70 | awk '{print ""$2""}' | sed -n '1!G;h;$p' > $FILELIST 
     LIST=$(cat $FILELIST)
-    convert -delay 15 -loop 0 -colors 64 $LIST $GIFPATH/$1.gif
-    mv $GIFPATH/$1.gif $WWWPATH/last.gif
-    #cp $WWWPATH/last.gif $WWWPATH/$1-$TS.gif
-    cp $1/snap00.jpg $WWWPATH/
-    mv $WWWPATH/snap00.jpg $WWWPATH/last.jpg
-    echo "{\"last\":\"$1-$TS.gif\"}" > $WWWPATH/last.json
+    convert -delay 15 -loop 0 -colors 64 $LIST $GIFPATH/$SLUG.gif
+    mv $GIFPATH/$SLUG.gif $WWWPATH/last.gif
+    #cp $WWWPATH/last.gif $WWWPATH/$SLUG-$TS.gif
+    set $LIST
+    cp $SLUG/${68} $WWWPATH/last_.jpg
+    mv $WWWPATH/last_.jpg $WWWPATH/last.jpg
+    echo "{\"last\":\"$SLUG-$TS.gif\"}" > $WWWPATH/last.json
   else
-    echo "No files in $1"
+    echo "No files in $SLUG"
 fi
 exit
 
