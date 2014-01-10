@@ -13,10 +13,7 @@ from slugify import slugify
 def start_webcam(webcam):
   if webcam.get("process") and webcam["process"].is_running():
     return
-  mjpeg2images_script = 'mjpeg2imageswatermarked.py'
-  if webcam['request'][0:4] == '/nph':
-    mjpeg2images_script = 'mjpeg2images_panasonicwatermarked.py'
-    print mjpeg2images_script 
+  mjpeg2images_script = 'mjpeg2watermarked.py'
   subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug'] + ' --name "' + webcam['city'] + ', ' + webcam['country'] + '" --localtime "'+ str(parser.parse(webcam["sunrise"])) + '"' ], shell=True)
   webcam["process"] = psutil.Process(subp.pid)
   print "start webcam " + webcam["city"]
