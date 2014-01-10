@@ -84,7 +84,7 @@ class mjpeg2images:
     def process(self, myimage):
 # crop
       w, h = myimage.size
-      if w < 640 || h < 480:
+      if w < 640 or h < 480:
         myimage = myimage.transform((640,480), Image.EXTENT,(0,0,w,h),Image.NEAREST)
         w, h = myimage.size
       w2,h2 = 640,440
