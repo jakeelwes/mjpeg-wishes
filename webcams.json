@@ -397,7 +397,7 @@
     "url": "palladiumjamaica.axiscam.net",
     "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
-    "sunrise": "07:41:00 -0500",
+    "sunrise": "06:41:00 -0500",
     "city":"Kingston",
     "country":"Jamaica",
     "website": "",
@@ -878,7 +878,7 @@
   },
   {
     "url" : "212.192.120.253",
-    "request" : "/mjpg/video.mjpg?resolution=640x480",
+    "request" : "/mjpg/video.mjpg",
     "port" : "80",
     "sunrise": "09:48:00 +0700",
     "city" : "Tomsk",
@@ -915,8 +915,6 @@
       "lng" : 40.396599
     }
   }
-
-
 
   ]
 }

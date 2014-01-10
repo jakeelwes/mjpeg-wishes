@@ -1,9 +1,10 @@
 #!/bin/sh
  
 PROJECTPATH='/home/petitprince/apps/mjpeg-wishes'
-LAUNCHCOMMAND='cpulimit -l 240 python run_webcams.py &'
+SCRIPT='run_webcams.py'
+LAUNCHCOMMAND="cpulimit -l 240 python $SCRIPT &"
 
-if ps ax | grep -v grep | grep '/bin/$PROJECTPATH' 
+if ps ax | grep -v grep | grep "$SCRIPT" 
 then
 echo "found" 
 else
