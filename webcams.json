@@ -733,19 +733,6 @@
 }
 },
 {
-"url" : "cam43906.miemasu.net",
-"port" : "80",
-"request" : "/nphMotionJpeg?Resolution=640x480",
-"sunrise": "06:53:00 +0800",
-"city" : "Shanghai",
-"country" : "China",
-"website" : "",
-"location" : {
-"lat" : 31.045601,
-"lng" : 121.399696
-}
-},
-{
 "url" : "cctvvrk.egat.com",
 "port" : "80",
 "request" : "/mjpg/video.mjpg",
