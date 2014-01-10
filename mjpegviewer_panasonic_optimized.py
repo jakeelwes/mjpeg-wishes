@@ -16,6 +16,7 @@ class mjpegviewer:
     number = 0
     request = '/axis-cgi/mjpg/video.cgi'
     nowindow = False
+    lastread = ''
   
     def __init__(self, ip, username='admin', password='admin', request = '/axis-cgi/mjpg/video.cgi', path=0, nowindow=False):  
   
@@ -41,21 +42,14 @@ class mjpegviewer:
   
     def update(self, window, size, offset):          
           
-        data = self.file.readline()  
-        if data[0:7] == 'Content':  
-            s = self.file.read(1)      
-            while s[0] != chr(0xff):  
-              s = self.file.read(1)      
-            s = [s]
-            endofjpeg = False
-            while endofjpeg != True:
-                s[len(s):] = [self.file.read(1)]      
-                if s[len(s)-1] == chr(0xff):
-                  s[len(s):] = [self.file.read(1)]      
-                  if s[len(s)-1] == chr(0xd9):
-                    endofjpeg = True
-            s = ''.join(s)
-            print "Number of bytes: " + str(len(s))
+          data = self.lastread+self.file.read(15000)  
+          parts = data.split('\xff\xd8')
+          for i,part in enumerate(parts):
+            partsofpart = part.split('\xff\xd9')
+            if len(partsofpart) < 2:
+              self.lastread = partsofpart[0]
+              continue
+            s = '\xff\xd8' + partsofpart[0] + '\xff\xd9'
                   
             if self.path != 0:
               p = StringIO.StringIO(s)  
