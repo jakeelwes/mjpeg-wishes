@@ -397,7 +397,7 @@
     "url": "palladiumjamaica.axiscam.net",
     "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "80",
-    "sunrise": "07:41:00 -0500",
+    "sunrise": "06:41:00 -0500",
     "city":"Kingston",
     "country":"Jamaica",
     "website": "",
