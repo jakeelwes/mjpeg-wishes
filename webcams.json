@@ -628,19 +628,6 @@
     }
   },
   {
-    "url": "pier1.kik.de",
-    "request": "/nphMotionJpeg?Resolution=640x480",
-    "port": "80",
-    "sunrise": "08:14:00 +0100",
-    "city":"Leipzig",
-    "country":"Germany",
-    "website": "",
-    "location": {
-      "lat": 51.341999,
-      "lng": 12.375
-    }
-  },
-  {
     "url": "shizenkan.iobb.net",
     "request": "/nphMotionJpeg?Resolution=640x480",
     "port": "80",
