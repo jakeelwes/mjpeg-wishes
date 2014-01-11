@@ -184,6 +184,8 @@ def main(argv):
       verbose = True
   camera = mjpeg2images(host, '', '', request, path, name, localtime, verbose)  
   camera.connect()  
+
+  delay = 1.15
     
   while True:  
     try:
@@ -192,7 +194,7 @@ def main(argv):
       while not camera.update():
         pass
       functiontime = time.time() - before
-      sleeptime = 2.3 - functiontime
+      sleeptime = delay - functiontime
       if sleeptime > 0:
         #print "sleep " + str(sleeptime)
         time.sleep(sleeptime)  
