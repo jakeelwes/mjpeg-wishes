@@ -179,7 +179,7 @@ def main(argv):
       before = time.time()
     
       while not camera.update():
-        time.sleep(.1)  
+        #time.sleep(.1)  
         pass
       functiontime = time.time() - before
       sleeptime = 2.3 - functiontime

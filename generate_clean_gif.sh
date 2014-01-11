@@ -13,7 +13,7 @@ if ls $SLUG/snap*.jpg > /dev/null 2>&1; then
     mv $GIFPATH/$SLUG.gif $WWWPATH/last.gif
     #cp $WWWPATH/last.gif $WWWPATH/$SLUG-$TS.gif
     set $LIST
-    cp ${68} $WWWPATH/last_.jpg
+    cp ${1} $WWWPATH/last_.jpg
     mv $WWWPATH/last_.jpg $WWWPATH/last.jpg
     echo "{\"last\":\"$SLUG-$TS.gif\"}" > $WWWPATH/last.json
   else
