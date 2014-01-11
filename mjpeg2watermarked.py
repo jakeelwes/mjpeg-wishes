@@ -49,7 +49,7 @@ class mjpeg2images:
         h.endheaders()  
         errcode, errmsg, headers = h.getreply()  
         self.file = h.getfile()  
-  
+
     def update(self):          
           isPictureFound = False
           if len(self.lastread) > 500000:
@@ -100,7 +100,18 @@ class mjpeg2images:
             p.close()  
             isPictureFound = True
           return isPictureFound
-              
+     
+    def trashcurrentreadimage(self):          
+      while True:
+          data = self.file.read(15000)  
+          if len(data) == 0:
+            return 
+          partsofpart = data.split('\xff\xd9')
+          if len(partsofpart) < 2:
+            continue
+          self.lastread = partsofpart[1]
+          return
+                          
     def close(self):  
       sys.exit()
     def process(self, myimage):
@@ -185,7 +196,7 @@ def main(argv):
       sleeptime = 2.3 - functiontime
       if sleeptime > 0:
         #print "sleep " + str(sleeptime)
-        camera.laststream = ''
+        camera.trashcurrentreadimage()
         time.sleep(sleeptime)  
     except KeyboardInterrupt:
       camera.close()
