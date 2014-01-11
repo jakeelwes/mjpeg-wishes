@@ -195,8 +195,8 @@ def main(argv):
       sleeptime = 2.3 - functiontime
       if sleeptime > 0:
         #print "sleep " + str(sleeptime)
-        camera.trashcurrentreadimage()
         time.sleep(sleeptime)  
+        camera.trashcurrentreadimage()
       #time.sleep(.01)  
     except KeyboardInterrupt:
       camera.close()
