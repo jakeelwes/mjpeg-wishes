@@ -696,9 +696,9 @@
   {
     "url" : "70.36.0.116",
     "request" : "/axis-cgi/mjpg/video.cgi?resolution=640x480",
-    "port" : "36",
-    "sunrise": "05:45:00 -0300",
-    "city":"Saint-pierre",
+    "port" : "80",
+    "sunrise": "08:35:00 -0300",
+    "city":"Miquelon",
     "country":"Saint Pierre and Miquelon",
     "website" : "",
     "location" : {
