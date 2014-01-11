@@ -52,9 +52,24 @@ class mjpeg2images:
   
     def update(self):          
           isPictureFound = False
-          data = self.lastread+self.file.read(15000)  
+          if len(self.lastread) > 500000:
+            if self.verbose:
+              print "Too much data, trashing it"
+              print self.lastread
+            self.lastread = ''
+
+          data = self.file.read(15000)  
+          if self.verbose:
+            print "Length of data: " + str(len(data))
+          if len(data) == 0:
+            if self.verbose:
+              print "Reconnect ******************************************************"
+            self.connect()
+            return False
+          data = self.lastread + data 
           parts = data.split('\xff\xd8')
           if self.verbose:
+            print "Length of data+lastread: " + str(len(data))
             print "Number of parts: " + str(len(parts))
           for i,part in enumerate(parts):
             partsofpart = part.split('\xff\xd9')
@@ -168,6 +183,8 @@ def main(argv):
       functiontime = time.time() - before
       sleeptime = 2.3 - functiontime
       if sleeptime > 0:
+        #print "sleep " + str(sleeptime)
+        camera.laststream = ''
         time.sleep(sleeptime)  
       #time.sleep(.01)  
     except KeyboardInterrupt:
