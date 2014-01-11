@@ -57,6 +57,7 @@ class mjpeg2images:
               self.lastread = partsofpart[0]
               continue
             s = '\xff\xd8' + partsofpart[0] + '\xff\xd9'
+            #print str(datetime.datetime.now()) + ' '  +str(self.number)
           
                          
             p = StringIO.StringIO(s)  
@@ -70,6 +71,8 @@ class mjpeg2images:
             im = self.process(im)
             fullpath = self.path + self.filename + ("%02d" % self.number) + '.' + self.extension
             im.save(fullpath)
+            # mofrify gif
+            #os.system('mogrify -format gif -colors 64 ' + fullpath)
             self.number += 1
             self.number %= 100
             p.close()  
@@ -147,9 +150,14 @@ def main(argv):
     
   while True:  
     try:
+      before = time.time()
     
       camera.update()  
-      time.sleep(.01)  
+      functiontime = time.time() - before
+      sleeptime = 2.3 - functiontime
+      if sleeptime > 0:
+        time.sleep(sleeptime)  
+      #time.sleep(.01)  
     except KeyboardInterrupt:
       camera.close()
 

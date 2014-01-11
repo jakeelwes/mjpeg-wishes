@@ -16,7 +16,7 @@ def start_webcam(webcam):
   mjpeg2images_script = 'mjpeg2watermarked.py'
   subp = subprocess.Popen(['python ' + mjpeg2images_script + ' --ip ' + webcam['url'] + ':' + webcam['port'] + ' --request ' + webcam['request'] + ' --path ' + webcam['slug'] + ' --name "' + webcam['city'] + ', ' + webcam['country'] + '" --localtime "'+ str(parser.parse(webcam["sunrise"])) + '"' ], shell=True)
   webcam["process"] = psutil.Process(subp.pid)
-  print "start webcam " + webcam["city"]
+  print "************************ start webcam " + webcam["city"]
 
 def start_gif(webcam):
   if webcam.get("process_gif"):
@@ -25,10 +25,16 @@ def start_gif(webcam):
     except psutil.TimeoutExpired:
       #print webcam.get("process_gif")
       return
+  print "make gif " + webcam["city"]
   subp = subprocess.Popen(['./generate_clean_gif.sh ' + webcam['slug'] ], shell=True)
   
   webcam["process_gif"] = psutil.Process(subp.pid)
+ 
+
+def start_gif_blocking(webcam):
   print "make gif " + webcam["city"]
+  os.system('./generate_clean_gif.sh ' + webcam['slug'])
+  
  
 def start_gifmail(webcam):
   if webcam.get("process_gifmail"):
@@ -88,6 +94,8 @@ for i, webcam in enumerate(mylist):
   print webcam["endtime"]
 
 
+for i, webcam in enumerate(mylist):
+  start_webcam(webcam)
 print ("\n")
 while True:
     try:
@@ -97,7 +105,7 @@ while True:
       for i, webcam in enumerate(mylist):
         # start webcam if not
         start_webcam(webcam)
-        start_gif(webcam)
+        start_gif_blocking(webcam)
         if now > webcam["endtime"]:
           webcam["starttime"] += datetime.timedelta(1,0)
           webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
@@ -106,7 +114,7 @@ while True:
           # make gif
           start_gifmail(webcam)
 
-      time.sleep(30)  
+      #time.sleep(30)  
     except KeyboardInterrupt:
       for webcam in mylist:
         stop_webcam(webcam)
