@@ -164,12 +164,12 @@ def main(argv):
       before = time.time()
     
       while not camera.update():
+        time.sleep(.1)  
         pass
       functiontime = time.time() - before
       sleeptime = 2.3 - functiontime
       if sleeptime > 0:
         time.sleep(sleeptime)  
-      #time.sleep(.01)  
     except KeyboardInterrupt:
       camera.close()
 
