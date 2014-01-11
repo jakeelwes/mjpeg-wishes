@@ -20,9 +20,10 @@ class mjpeg2images:
     request = '/axis-cgi/mjpg/video.cgi'
     name = 'PARIS, FRANCE'
     localtime = "2014-01-07 00:03:33.923494+09:00"
+    verbose = False
     lastread = ''
   
-    def __init__(self, ip, username='admin', password='admin', request = '/axis-cgi/mjpg/video.cgi', path="stream/", name = 'PARIS, FRANCE', localtime = "2014-01-07 00:03:33.923494+09:00"):  
+    def __init__(self, ip, username='admin', password='admin', request = '/axis-cgi/mjpg/video.cgi', path="stream/", name = 'PARIS, FRANCE', localtime = "2014-01-07 00:03:33.923494+09:00", verbose=False):  
   
         self.ip = ip  
         self.username = username  
@@ -33,6 +34,7 @@ class mjpeg2images:
         self.request = request
         self.name = name
         self.localtime = str(localtime)
+        self.verbose = verbose
         if not os.path.exists(self.path):
               os.makedirs(self.path)
   
@@ -49,15 +51,20 @@ class mjpeg2images:
         self.file = h.getfile()  
   
     def update(self):          
+          isPictureFound = False
           data = self.lastread+self.file.read(15000)  
           parts = data.split('\xff\xd8')
+          if self.verbose:
+            print "Number of parts: " + str(len(parts))
           for i,part in enumerate(parts):
             partsofpart = part.split('\xff\xd9')
             if len(partsofpart) < 2:
               self.lastread = partsofpart[0]
               continue
             s = '\xff\xd8' + partsofpart[0] + '\xff\xd9'
-            #print str(datetime.datetime.now()) + ' '  +str(self.number)
+            if self.verbose:
+              print str(datetime.datetime.now()) + ' '  +str(self.number)
+              print "Image size: " + str(len(s))
           
                          
             p = StringIO.StringIO(s)  
@@ -76,6 +83,8 @@ class mjpeg2images:
             self.number += 1
             self.number %= 100
             p.close()  
+            isPictureFound = True
+          return isPictureFound
               
     def close(self):  
       sys.exit()
@@ -120,9 +129,10 @@ def main(argv):
   screen = ''
   name = 'PARIS, FRANCE'
   localtime = "2014-01-07 00:03:33.923494+09:00"
+  verbose=False
 
   try:
-    opts, args = getopt.getopt(argv,"hi:p:r:n:t:",["ip=", "path=", "request=", "name=", "localtime="])
+    opts, args = getopt.getopt(argv,"hi:p:r:n:t:v",["ip=", "path=", "request=", "name=", "localtime=", "verbose"])
   except getopt.GetoptError:
     print 'mjpeg2images.py -h to get help'
     sys.exit(2)
@@ -144,15 +154,17 @@ def main(argv):
       name = arg.upper()
     elif opt in ("-t", "--localtime"):
       localtime = arg
-   
-  camera = mjpeg2images(host, '', '', request, path, name, localtime)  
+    elif opt in ("-v", "--verbose"):
+      verbose = True
+  camera = mjpeg2images(host, '', '', request, path, name, localtime, verbose)  
   camera.connect()  
     
   while True:  
     try:
       before = time.time()
     
-      camera.update()  
+      while not camera.update():
+        pass
       functiontime = time.time() - before
       sleeptime = 2.3 - functiontime
       if sleeptime > 0:
