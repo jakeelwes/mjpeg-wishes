@@ -9,6 +9,7 @@ import subprocess
 import psutil
 import sys
 from slugify import slugify
+import ephem  
 
 def start_webcam(webcam):
   if webcam.get("process") and webcam["process"].is_running():
@@ -53,24 +54,52 @@ def stop_webcam(webcam):
     webcam["process"].kill()
     print "stop " + webcam["city"]
 
+def get_sunrise(webcam):
+  o=ephem.Observer()  
+  o.lat=str(webcam['location']['lat'])
+  o.long=str(webcam['location']['lng'])
+  s=ephem.Sun()  
+  s.compute()  
+  #print ephem.localtime(o.previous_rising(s))
+  #print ephem.localtime(o.next_rising(s))
+  sunrise = o.next_rising(s).datetime().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(webcam["sunrise"]).tzinfo))
+  return sunrise
+
+
+
 json_data=open('webcams.json')
 
 data = json.load(json_data)
 #pprint(data)
 mylist = data["webcams"]
 json_data.close()
-mylist.sort(key=lambda r: parser.parse(r["sunrise"]))
-print len(mylist)
 
-#print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
-
-if not os.path.exists("/var/www/soixantesunrises"):
-  os.makedirs("/var/www/soixantesunrises")
+# remove down cameras
 for webcam in mylist[:]:
   if webcam.get("down"):
     mylist.remove(webcam)
 
+#calculate sunrise
+for webcam in mylist:
+  #print webcam["city"]
+  #print webcam["sunrise"]
+  webcam["sunrise"] = get_sunrise(webcam).strftime("%H:%M:%S %z")
+  #print webcam["sunrise"]
+
+
+# sort
+mylist.sort(key=lambda r: parser.parse(r["sunrise"]))
+
+#print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
+
+# slugify
+for webcam in mylist:
   webcam["slug"] = slugify(webcam["city"])
+
+# write json for website
+if not os.path.exists("/var/www/soixantesunrises"):
+  os.makedirs("/var/www/soixantesunrises")
+print "Number of webcams: " + str(len(mylist)) 
 try:
   outfile=open('/var/www/soixantesunrises/webcams.json','w')
   json.dump(mylist,outfile)
@@ -86,7 +115,6 @@ for webcam in mylist:
   #webcam["starttime"] = sunrise_utc - datetime.timedelta(0,30*60) # 30 minutes 
   #webcam["endtime"] = sunrise_utc + datetime.timedelta(0,90*60) # 90 minutes 
   webcam["starttime"] = sunrise_utc
-  webcam["slug"] = slugify(webcam["city"])
   print webcam["slug"]
 for i, webcam in enumerate(mylist):
   webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
