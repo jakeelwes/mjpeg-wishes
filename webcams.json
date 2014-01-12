@@ -475,7 +475,7 @@
     "url": "87.23.32.118",
     "request": "/nphMotionJpeg?Resolution=640x480",
     "port": "12380",
-    "sunrise": "07:45:00 +0000",
+    "sunrise": "07:45:00 +0100",
     "city":"Duino",
     "country":"Italy",
     "website": "",
@@ -731,7 +731,8 @@
       "lat" : 14.799444,
       "lng" :  98.596944
     },
-    "down" : 1
+    "down": 1,
+    "whatsdown": "the server replies 404 when asked by mjpeg2watermarked, but it works in the browser"
   },
   {
     "url" : "livevideo.worldicearena.com",

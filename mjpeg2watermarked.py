@@ -185,7 +185,7 @@ def main(argv):
   camera = mjpeg2images(host, '', '', request, path, name, localtime, verbose)  
   camera.connect()  
 
-  delay = 1.15
+  delay = 1.55
     
   while True:  
     try:
