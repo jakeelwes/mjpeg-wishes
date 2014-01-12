@@ -90,6 +90,12 @@ for webcam in mylist:
 # sort
 mylist.sort(key=lambda r: parser.parse(r["sunrise"]))
 
+for webcam in mylist:
+  sunrise_time = parser.parse(webcam["sunrise"]) 
+  #sunrise_utc = sunrise_time.astimezone(timezone('Australia/Victoria'))
+  sunrise_utc = sunrise_time.astimezone(timezone('CET'))
+  print sunrise_utc.strftime("%H:%M:%S") + " / " + webcam["city"]
+
 #print datetime.datetime.utcnow().replace(tzinfo=timezone("UTC")).astimezone((parser.parse(mylist[0]["sunrise"]).tzinfo))
 
 # slugify
@@ -115,7 +121,6 @@ for webcam in mylist:
   #webcam["starttime"] = sunrise_utc - datetime.timedelta(0,30*60) # 30 minutes 
   #webcam["endtime"] = sunrise_utc + datetime.timedelta(0,90*60) # 90 minutes 
   webcam["starttime"] = sunrise_utc
-  print webcam["slug"]
 for i, webcam in enumerate(mylist):
   webcam["endtime"] = mylist[(i+1)%len(mylist)]["starttime"]
   print webcam["starttime"]
