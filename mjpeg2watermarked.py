@@ -61,6 +61,9 @@ class mjpeg2images:
           data = self.file.read(15000)  
           if self.verbose:
             print "Length of data: " + str(len(data))
+          if len(data) < 15000:
+            if self.verbose:
+              print data
           if len(data) == 0:
             if self.verbose:
               print "Reconnect ******************************************************"

@@ -306,13 +306,13 @@
     "url": "norwalk.axiscam.net",
     "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "2222",
-    "sunrise": "07:25:00 -0800",
-    "city":"Fairfield",
-    "country":"United States",
+    "sunrise": "07:25:00 -0500",
+    "city":"Norwalk",
+    "country":"Connecticut",
     "website": "",
     "location": {
-      "lat": 41.174599,
-      "lng": -73.284302
+      "lat": 41.099615,
+      "lng": -73.366338
     }
   },
   {
@@ -332,13 +332,13 @@
     "url": "clarksvillelive.axiscam.net",
     "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port": "1211",
-    "sunrise": "07:01:00 -0600",
+    "sunrise": "07:25:00 -0500",
     "city":"Clarksville",
-    "country":"United States",
+    "country":"Virginia",
     "website": "",
     "location": {
-      "lat": 36.6362,
-      "lng": -78.514702
+      "lat": 36.624991,
+      "lng": -78.555906
     }
   },
   {
@@ -842,13 +842,13 @@
     "url" : "cam1.belogorsk.net",
     "request" : "/mjpg/video.mjpg?resolution=640x480",
     "port" : "80",
-    "sunrise": "09:52:00 +1100",
+    "sunrise": "09:24:00 +1000",
     "city" : "Amur",
     "country" : "Russia",
     "website" : "",
     "location" : {
-      "lat" : 54.154900,
-      "lng" : 34.314098
+      "lat" : 50.930738,
+      "lng" : 128.446197
     }
   },
   {
