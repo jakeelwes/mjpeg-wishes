@@ -933,7 +933,7 @@
     "url" : "103.29.90.144",
     "request": "/axis-cgi/mjpg/video.cgi?resolution=640x480",
     "port" : "80",
-    "sunrise": "6:03i:00 +1300",
+    "sunrise": "6:03:00 +1300",
     "city" : "Whakatane",
     "country" : "New Zealand",
     "website" : "",
