@@ -891,6 +891,45 @@
     }
   },
   {
+    "url" : "208.0.229.146",
+    "request" : "nphMotionJpeg?Resolution=640x480&Quality=Standard",
+    "port" : "80",
+    "sunrise": "06:53:00 -0400",
+    "city" : "Saba Rock",
+    "country" : "British Virgin Islands",
+    "website" : "",
+    "location" : {
+      "lat" : 18.503309,
+      "lng" : -64.358077
+    }
+  },
+  {
+    "url" : "81.248.11.35",
+    "request" : "/mjpg/video.mjpg",
+    "port" : "80",
+    "sunrise": "06:36:00 -0400",
+    "city" : "Gustavia",
+    "country" : "Saint-Barthélemy",
+    "website" : "",
+    "location" : {
+      "lat" : 17.894318,
+      "lng" : -62.847251
+    }
+  },
+{
+"url" : "146.83.8.136",
+"request" : "/mjpg/video.mjpg?resolution=640x480",
+"port" : "80",
+    "sunrise": "06:46:00 -0300",
+"city" : "Santiago",
+"country" : "Chile",
+"website" : "",
+"location" : {
+"lat" : -33.456938,
+"lng" : -70.662353
+}
+},
+  {
     "url" : "www.vladimir-city.ru",
     "request" : "/mjpg/video.mjpg?resolution=640x480",
     "port" : "8080",
