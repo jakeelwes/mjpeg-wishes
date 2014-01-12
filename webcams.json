@@ -891,7 +891,7 @@
   },
   {
     "url" : "208.0.229.146",
-    "request" : "nphMotionJpeg?Resolution=640x480&Quality=Standard",
+    "request" : "nphMotionJpeg?Resolution=640x480",
     "port" : "80",
     "sunrise": "06:53:00 -0400",
     "city" : "Saba Rock",
