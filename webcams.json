@@ -915,19 +915,45 @@
       "lng" : -62.847251
     }
   },
-{
-"url" : "146.83.8.136",
-"request" : "/mjpg/video.mjpg?resolution=640x480",
-"port" : "80",
+  {
+    "url" : "146.83.8.136",
+    "request" : "/mjpg/video.mjpg?resolution=640x480",
+    "port" : "80",
     "sunrise": "06:46:00 -0300",
-"city" : "Santiago",
-"country" : "Chile",
-"website" : "",
-"location" : {
-"lat" : -33.456938,
-"lng" : -70.662353
-}
-},
+    "city" : "Santiago",
+    "country" : "Chile",
+    "website" : "",
+    "location" : {
+      "lat" : -33.456938,
+      "lng" : -70.662353
+    }
+  },
+  {
+    "url" : "103.29.90.144",
+    "request" : "/axis-cgi",
+    "port" : "80",
+    "sunrise": "6:03i:00 +1300",
+    "city" : "Whakatane",
+    "country" : "New Zealand",
+    "website" : "",
+    "location" : {
+      "lat" : -37.983299,
+      "lng" : 177.000000
+    }
+  },
+  {
+    "url" : "41.75.32.26",
+    "request": "/nphMotionJpeg?Resolution=640x480",
+    "port" : "8000",
+    "sunrise": "06:35:00 +0300",
+    "city" : "Turtle Bay",
+    "country" : "Kenya",
+    "website" : "",
+    "location" : {
+      "lat" : -3.342752,
+      "lng" : 40.006599
+    }
+  },
   {
     "url" : "www.vladimir-city.ru",
     "request" : "/mjpg/video.mjpg?resolution=640x480",
