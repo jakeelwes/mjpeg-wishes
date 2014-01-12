@@ -956,6 +956,58 @@
     }
   },
   {
+    "url" : "solaris.saao.ac.za",
+    "request" : "/cgi-bin/faststream.jpg?fps=1",
+    "port" : "80",
+    "sunrise": "05:48:00 +0200",
+    "city" : "Sutherland",
+    "country" : "South Africa",
+    "website" : "http://www.saao.ac.za/sutherland-live/",
+    "location" : {
+      "lat" : -32.377316,
+      "lng" : 20.80694
+    }
+  },
+  {
+    "url" : "95.9.115.170",
+    "request" : "/mjpg/video.mjpg?resolution=640x480",
+    "port" : "80",
+    "sunrise": "06:44:00 +0200",
+    "city" : "Trabzon",
+    "country" : "Turkey",
+    "website" : "",
+    "location" : {
+      "lat" : 41.005001,
+      "lng" : 39.726898
+    }
+  },
+  {
+    "url" : "mahoganyrun.viewnetcam.com",
+    "request": "/nphMotionJpeg?Resolution=640x480",
+    "port" : "80",
+    "sunrise": "05:47:00 -0400",
+    "city" : "Saint-John",
+    "country" : "U.S. Virgin Islands",
+    "website" : "",
+    "location" : {
+      "lat" : 18.336032,
+      "lng" : -64.798186
+    }
+  },
+  {
+    "url" : "213.42.237.137",
+    "request" : "/oneshotimage.jpg",
+    "port" : "80",
+    "sunrise": "07:06:00 +0400",
+    "city" : "Sharjah",
+    "country" : "United Arab Emirates",
+    "website" : "",
+    "location" : {
+      "lat" : 25.3372,
+      "lng" : 55.361366
+    }
+  },
+  {
     "url" : "www.vladimir-city.ru",
     "request" : "/mjpg/video.mjpg?resolution=640x480",
     "port" : "8080",
